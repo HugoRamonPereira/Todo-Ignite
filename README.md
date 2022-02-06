@@ -22,7 +22,7 @@ Besides the challenge I added a few more functionalities to the application:
 
 This is what it looks like:
 
-<img src="./public/assets/Rocketseat Ignite.gif">
+<img src="./public/assets/Ignite.gif" >
 
 # Instalação
 
