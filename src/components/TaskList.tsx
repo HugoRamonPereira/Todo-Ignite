@@ -29,6 +29,7 @@ export function TaskList() {
     setNewTaskTitle('');
   }
 
+  // Enable Enter key to add new todo instead of clicking the button only
   const handleEnterKeySubmit = (e:any) => {
     if(e.keyCode === 13) {
       return;
