@@ -12,11 +12,11 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState("");
 
-  function handleCreateNewTask() {
-    // e.preventDefault();
+  function handleCreateNewTask(e:any) {
+    e.preventDefault();
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
-    if(!newTaskTitle) return;
-    // if (newTaskTitle === "") return;
+    // if(!newTaskTitle) return;
+    if (newTaskTitle === "") return;
 
     const newTask = {
       //Generate a random ID ranging between 1 and 10000 OBS: Not a good practice
@@ -25,54 +25,51 @@ export function TaskList() {
       isComplete: false,
     };
 
-    setTasks((tasks) => [...tasks, newTask]);
-    setNewTaskTitle("");
+    setTasks(tasks => [...tasks, newTask]);
+    setNewTaskTitle('');
   }
 
-  // const handleEnterKeySubmit = (e:any) => {
-  //   if(e.keyCode === 13) {
-  //     return;
-  //   }
-  // } 
+  const handleEnterKeySubmit = (e:any) => {
+    if(e.keyCode === 13) {
+      return;
+    }
+  } 
 
   function handleToggleTaskCompletion(id: number) {
     // Switch from 'true' to 'false' the field 'isComplete' of a task with the given ID
-    const checkedTask = tasks.map((task) =>
-      task.id === id
-        ? {
+    const checkedTask = tasks.map(task => task.id === id ? {
             ...task,
             isComplete: !task.isComplete,
-          }
-        : task
+          } : task
     );
     setTasks(checkedTask);
   }
 
   function handleRemoveTask(id: number) {
     // Remova uma task da listagem pelo ID
-    const deletedTask = tasks.filter((task) => task.id !== id);
+    const deletedTask = tasks.filter(task => task.id !== id);
     setTasks(deletedTask);
   }
 
-  // const inputRef: any = useRef(null);
-
-  // useEffect(() => {
-  //   inputRef.current.focus();
-  // });
+  // Input focus when add new todo
+  const inputRef: any = useRef(null);
+  useEffect(() => {
+    inputRef.current.focus();
+  });
 
   return (
     <section className="task-list container">
       <header>
-        <h2>My daily tasks</h2>
+        <h2>Minhas tasks</h2>
 
-        <div className="input-group">
+        <form className="input-group">
           <input
             type="text"
-            placeholder="Add new to-do"
+            placeholder="Adicionar novo todo"
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
-            // onKeyPress={handleEnterKeySubmit}
-            // ref={inputRef}
+            onKeyPress={handleEnterKeySubmit}
+            ref={inputRef}
           />
           <button
             type="submit"
@@ -81,7 +78,7 @@ export function TaskList() {
           >
             <FiCheckSquare size={16} color="#fff" />
           </button>
-        </div>
+        </form>
       </header>
 
       <main>
