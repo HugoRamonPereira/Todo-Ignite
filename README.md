@@ -39,5 +39,5 @@ yarn add
 ```
 
 # License
-© Feito com muito &#10084; por [Ramon Pereira](https://www.linkedin.com/in/ramon-pereira88/) 🤝
+© Projeto feito pela [Rocketseat](https://www.linkedin.com/school/rocketseat/) e o desafio feito por [Ramon Pereira](https://www.linkedin.com/in/ramon-pereira88/) 🤝
 
